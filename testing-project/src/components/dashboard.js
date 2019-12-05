@@ -21,22 +21,24 @@ function Dashboard() {
 	const strike = (evt) => {
 		evt.preventDefault();
 		setStrikeCount(strikeCount + 1);
-
 	}
-
-	useEffect(() => {
-		if (strikeCount === 3) {
-			setStrikeCount(0);
-		}
-	}, [strikeCount])
 
 	const ball = (evt) => {
 		evt.preventDefault();
 		setBallCount(ballCount + 1);
-		if (ballCount === 4) {
-			setBallCount(0);
-		}
 	}
+
+	const resetToZero = () => {
+		setStrikeCount(0);
+		setBallCount(0);
+	}
+
+	useEffect(() => {
+		if (strikeCount === 3 || ballCount === 4) {
+			resetToZero();
+		}
+	}, [strikeCount, ballCount])
+
 
 	const foul = (evt) => {
 		evt.preventDefault();
@@ -50,8 +52,7 @@ function Dashboard() {
 
 	const hit = (evt) => {
 		evt.preventDefault();
-		setBallCount(0);
-		setStrikeCount(0);
+		resetToZero();
 	}
 
 
