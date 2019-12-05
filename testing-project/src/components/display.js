@@ -15,7 +15,7 @@ const DisplayCon = styled.div`
 			font-size: 5rem;
 			color: #fff;
 			margin: 0;
-			background: #444;
+			background: #333;
 			padding: 0.1em 1em;
 		}
 	}

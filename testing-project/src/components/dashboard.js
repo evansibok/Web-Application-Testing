@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import Display from './display'
@@ -19,19 +19,39 @@ function Dashboard() {
 	const [strikeCount, setStrikeCount] = useState(0);
 
 	const strike = (evt) => {
-		console.log(evt.target)
+		evt.preventDefault();
+		setStrikeCount(strikeCount + 1);
+
 	}
 
+	useEffect(() => {
+		if (strikeCount === 3) {
+			setStrikeCount(0);
+		}
+	}, [strikeCount])
+
 	const ball = (evt) => {
-		console.log(evt.target)
+		evt.preventDefault();
+		setBallCount(ballCount + 1);
+		if (ballCount === 4) {
+			setBallCount(0);
+		}
 	}
 
 	const foul = (evt) => {
-		console.log(evt.target)
+		evt.preventDefault();
+		if (strikeCount === 0 || strikeCount === 1) {
+			setStrikeCount(strikeCount + 1)
+		} else if (strikeCount === 2) {
+			setStrikeCount(strikeCount)
+		};
+		return strikeCount
 	}
 
 	const hit = (evt) => {
-		console.log(evt.target)
+		evt.preventDefault();
+		setBallCount(0);
+		setStrikeCount(0);
 	}
 
 
