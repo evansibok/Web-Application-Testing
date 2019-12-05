@@ -15,24 +15,25 @@ const DisplayCon = styled.div`
 			font-size: 5rem;
 			color: #fff;
 			margin: 0;
-			background: #666;
+			background: #444;
 			padding: 0.1em 1em;
 		}
 	}
 `;
 
-const Display = (props) => {
+const Display = ({ ballCount, strikeCount }) => {
+
 
 	return (
 		<DisplayCon>
 			<div className="disCon">
 				<h5>Balls</h5>
-				<h3>5</h3>
+				<h3>{ballCount}</h3>
 			</div>
 
 			<div className="disCon">
 				<h5>Strikes</h5>
-				<h3>3</h3>
+				<h3>{strikeCount}</h3>
 			</div>
 
 		</DisplayCon>
