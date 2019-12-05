@@ -57,7 +57,7 @@ function Dashboard() {
 
 
 	return (
-		<div>
+		<div className="dashboard">
 			<Display ballCount={ballCount} strikeCount={strikeCount} />
 			<Button onClick={strike}>Strike</Button>
 			<Button onClick={ball}>Ball</Button>

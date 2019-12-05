@@ -1,14 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-import Display from './display'
+import * as rtl from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'
+import Dashboard from './dashboard';
 
-function Dashboard() {
-	return (
-		<div>
-			<Display />
+afterEach(rtl.cleanup)
 
-		</div>
-	)
-}
+it('renders without crashing', () => {
 
-export default Dashboard
+	const wrapper = rtl.render(<Dashboard />);
+	wrapper.debug();
+
+	const buttonText = wrapper.getByText(/foul/i)
+	expect(buttonText).toBeInTheDocument()
+
+	const dashboardContainer = document.querySelector('[class="dashboard"]')
+	expect(dashboardContainer).toHaveAttribute("class", "dashboard")
+})
